@@ -1,14 +1,4 @@
-<?php 
-session_start(); 
 
-if (isset($_SESSION['acceso'])){
-  if ($_SESSION['acceso'] == true){
-    header('Location:views/');
-  }
-}
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,48 +10,19 @@ if (isset($_SESSION['acceso'])){
   <link rel="stylesheet" href="views/css/style.css">
 </head>
 <body>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm container-fluid">
-      <img class="card-img-top" src="views/img/login.jpg" alt="Card image cap">
-    </div>
-    <div class="col-sm row  align-items-center">
-      <div class="card mx-auto">
-        <div id="formContent">
-            <div class="fadeIn first title">
-              <img src="views/img/LOGO W-02.png"  style="background-color: black;" id="icon" alt="User Icon" />
-            </div>         
-            <form>
-              <div  id="validateUser" style="width: 85%; margin: 0 auto;" class="alert alert-danger" role="alert">
-                Tiene que ingresar su usuario
-              </div>
-              <input type="text" id="nomuser" class="fadeIn second" name="login" placeholder="usuario">
-              <div  id="validateContra" style="width: 85%; margin: 0 auto;" class="alert alert-danger" role="alert">
-                Tiene que ingresar su Contraseña
-              </div>
-              <input type="text" id="claveuser" class="fadeIn third" name="login" placeholder="contraseña">              
-              <div class="col-md-12 btnSec">
-                  <a class="btn btn-lg btn-google btn-block text-uppercase btn-outline" style="background-color: #f6f6f6;" href="#"><img style="margin: 2px 13px 3px 0px;  width:8%" src="views/img/logoGoogle.png">Continuar con Google</a>
-              </div>
-              <div class="col-md-12 btnSec">
-                  <a class="btn btn-lg btn-google btn-block text-uppercase btn-outline" style="background-color: #f6f6f6;" href="#"><img style="margin: 2px 13px 3px 0px;  width:8%" src="views/img/logFb.png">Continuar con Google</a>
-              </div>
-              
-            <input id="acceder"  class="fadeIn fourth btn btn-dark" value="Iniciar Sesion">
-            </form>
-            <div id="formFooter">
-                <a class="underlineHover" href="#">Forgot Password?</a>
-            </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<?php 
 
-  
+  include 'views/nav.php';
+  if(isset($_GET['ruta'])){
+    if($_GET['ruta']=='login' || ($_GET['ruta']=='registro-usuario')){
+      include 'views/'.$_GET['ruta'].'.php';
+    }
+  }
+?>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
     $(document).ready(function() {
       $('#validateUser').hide();
       $('#validateContra').hide();
@@ -107,10 +68,7 @@ if (isset($_SESSION['acceso'])){
           signin();
       });
 
-      // $("#acceder").click(signin());
-
     });
-  </script>
-
+</script> 
 </body>
 </html>
