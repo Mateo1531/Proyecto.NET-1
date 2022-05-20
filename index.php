@@ -17,35 +17,56 @@ if (isset($_SESSION['acceso'])){
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+  <link rel="stylesheet" href="views/css/style.css">
 </head>
 <body>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4"></div>
-      <div class="col-md-4">
-        <h4>Acceso al sistema</h4>
-        <form action="">
-          <div class="form-group">
-            <label for="">Escribe tu nombre de usuario:</label>
-            <input type="text" class="form-control" id="nomuser">
-          </div>
-          <div class="form-group">
-            <label for="">Escribe tu contraseña:</label>
-            <input type="password" class="form-control" id="claveuser">
-          </div>
-          <button id="acceder" class="btn btn-success" type="button">Ingresar</button>
-        </form>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm container-fluid">
+      <img class="card-img-top" src="views/img/login.jpg" alt="Card image cap">
+    </div>
+    <div class="col-sm row  align-items-center">
+      <div class="card mx-auto">
+        <div id="formContent">
+            <div class="fadeIn first title">
+              <img src="views/img/LOGO W-02.png"  style="background-color: black;" id="icon" alt="User Icon" />
+            </div>         
+            <form>
+              <div  id="validateUser" style="width: 85%; margin: 0 auto;" class="alert alert-danger" role="alert">
+                Tiene que ingresar su usuario
+              </div>
+              <input type="text" id="nomuser" class="fadeIn second" name="login" placeholder="usuario">
+              <div  id="validateContra" style="width: 85%; margin: 0 auto;" class="alert alert-danger" role="alert">
+                Tiene que ingresar su Contraseña
+              </div>
+              <input type="text" id="claveuser" class="fadeIn third" name="login" placeholder="contraseña">              
+              <div class="col-md-12 btnSec">
+                  <a class="btn btn-lg btn-google btn-block text-uppercase btn-outline" style="background-color: #f6f6f6;" href="#"><img style="margin: 2px 13px 3px 0px;  width:8%" src="views/img/logoGoogle.png">Continuar con Google</a>
+              </div>
+              <div class="col-md-12 btnSec">
+                  <a class="btn btn-lg btn-google btn-block text-uppercase btn-outline" style="background-color: #f6f6f6;" href="#"><img style="margin: 2px 13px 3px 0px;  width:8%" src="views/img/logFb.png">Continuar con Google</a>
+              </div>
+              
+            <input id="acceder"  class="fadeIn fourth btn btn-dark" value="Iniciar Sesion">
+            </form>
+            <div id="formFooter">
+                <a class="underlineHover" href="#">Forgot Password?</a>
+            </div>
+        </div>
       </div>
     </div>
-    <div class="col-md-4"></div>
   </div>
+</div>
+
+  
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script>
     $(document).ready(function() {
-      
+      $('#validateUser').hide();
+      $('#validateContra').hide();
       function signin(){
-        if ($("#nomuser").val() != "" && $("#claveuser").val() != ""){
+        if($("#nomuser").val() != "" && $("#claveuser").val() != ""){
           $.ajax({
             url: 'controllers/usuario.controller.php',
             type: 'GET',
@@ -64,15 +85,29 @@ if (isset($_SESSION['acceso'])){
             }
           });
         }
+        if($("#nomuser").val() != "" || $("#claveuser").val()!="" ){
+          $('#validateUser').hide();
+        }
+        if($("#claveuser").val()!="" ){
+          $('#validateUser').hide();
+        }
+        if($("#nomuser").val() == ""){
+          $('#validateUser').show();
+        }
+        if($("#claveuser").val() == ""){
+          $('#validateContra').show();
+        }
+        else{
+          $('#validateUser').show();
+          $('#validateContra').show();
+        }
       }
 
-      $("#claveuser").keypress(function (event){
-        if (event.keyCode == 13){
+      $("#acceder").click(function (){
           signin();
-        }
       });
 
-      $("#acceder").click(signin);
+      // $("#acceder").click(signin());
 
     });
   </script>
