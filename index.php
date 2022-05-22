@@ -12,8 +12,11 @@
 <?php 
   include 'views/nav.php';
   if(isset($_GET['ruta'])){
-    if($_GET['ruta']=='login' || $_GET['ruta']=='registro-usuario'){
-      include 'views/'.$_GET['ruta'].'.php';
+    $ruta='views/'.$_GET['ruta'].'.php';
+    if(file_exists($ruta)){
+      include $ruta;
+    }else{
+      include 'views/home.php';
     }
   }
 ?>
@@ -23,5 +26,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
 <!-- Funciones -->
 <script src="views/js/login.js"></script>
+<script src="views/js/curso.js"></script>
+
 </body>
 </html>
