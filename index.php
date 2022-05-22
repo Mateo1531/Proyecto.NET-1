@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,67 +10,18 @@
 </head>
 <body>
 <?php 
-
   include 'views/nav.php';
   if(isset($_GET['ruta'])){
-    if($_GET['ruta']=='login' || ($_GET['ruta']=='registro-usuario')){
+    if($_GET['ruta']=='login' || $_GET['ruta']=='registro-usuario'){
       include 'views/'.$_GET['ruta'].'.php';
     }
   }
 ?>
-
+<!-- Bootstrap -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
-    $(document).ready(function() {
-      $('#validateUser').hide();
-      $('#validateContra').hide();
-      function signin(){
-        if($("#nomuser").val() != "" && $("#claveuser").val() != ""){
-          $.ajax({
-            url: 'controllers/usuario.controller.php',
-            type: 'GET',
-            data: {
-              op          : 'login',
-              username    : $("#nomuser").val(),
-              contraseña  : $("#claveuser").val()
-            },
-            success: function (result){
-              if ($.trim(result) == ""){
-                //Ingresa al dashboard
-                window.location.href = 'views/'
-              } else {
-                alert(result);
-              }
-            }
-          });
-        }
-        if($("#nomuser").val() != "" || $("#claveuser").val()!="" ){
-          $('#validateUser').hide();
-        }
-        if($("#claveuser").val()!="" ){
-          $('#validateUser').hide();
-        }
-        if($("#nomuser").val() == ""){
-          $('#validateUser').show();
-        }
-        if($("#claveuser").val() == ""){
-          $('#validateContra').show();
-        }
-        else{
-          $('#validateUser').show();
-          $('#validateContra').show();
-        }
-      }
-
-      $("#acceder").click(function (){
-          signin();
-      });
-
-    });
-</script> 
+<!-- Funciones -->
+<script src="views/js/login.js"></script>
 </body>
 </html>

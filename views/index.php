@@ -3,9 +3,9 @@
     
     if ($_SESSION['acceso'] == false){
         //Acceso al Dashboard
-        header('location:../');
+        header('location:/login.php');
     }
-   
+    
     if (isset($_SESSION['acceso'])){
     }
 ?>
