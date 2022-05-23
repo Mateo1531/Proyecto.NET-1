@@ -1,13 +1,13 @@
 <?php 
     session_start(); 
     
-    if ($_SESSION['acceso'] == false){
-        //Acceso al Dashboard
-        header('location:/login.php');
-    }
+    // if ($_SESSION['acceso'] == false){
+    //     //Acceso al Dashboard
+    //     header('location:/login.php');
+    // }
     
-    if (isset($_SESSION['acceso'])){
-    }
+    // if (isset($_SESSION['acceso'])){
+    // }
 ?>
 
     <style>

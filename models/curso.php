@@ -5,12 +5,13 @@
 
         public function crearCurso(array $datosRespuesta){
             try {
-                return parent::execProcedure($datosRespuesta, "sp_create_Curso", true);
+                // var_dump($datosRespuesta);die;
+                parent::execProcedure($datosRespuesta, "sp_create_Curso", false);
+                return "succes";
             } catch (Exception $error){
                 die($error->getMessage());
             }
         }
-
         public function listCategoria(){
             try {
                 return parent::getRows("sp_listCategoria");
@@ -19,13 +20,13 @@
             }
         }
 
-        public function template(array $datosRespuesta){
-            try {
-                return parent::execProcedure($datosRespuesta, "stored_procedure", true);
-            } catch (Exception $error){
-                die($error->getMessage());
-            }
-        }
+        // public function template(array $datosRespuesta){
+        //     try {
+        //         return parent::execProcedure($datosRespuesta, "stored_procedure", true);
+        //     } catch (Exception $error){
+        //         die($error->getMessage());
+        //     }
+        // }
 
     }
 ?>

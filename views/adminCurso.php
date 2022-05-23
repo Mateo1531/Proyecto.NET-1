@@ -45,6 +45,7 @@
     </div>
 </div>
 
+<img id="succes" src="views/img/7efs.gif" alt="">
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -62,7 +63,7 @@
             <input type="text" class="form-control" name="nombreCurso" id="nombreCurso">
           </div>
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Descripcion del curso:</label>
+            <label for="recipient-name" class="col-form-label">Descripcion:</label>
             <input type="text" class="form-control" name="descripcion" id="descripcion">
           </div>
           <div class="form-group">
@@ -70,12 +71,20 @@
             <input type="text" class="form-control" name="descripcion" id="temario">
           </div>
           <div class="form-group">
-            <label for="idCategoria">Example select</label>
-            <select class="form-control" id="idCategoria">
+            <label for="recipient-name"  class="col-form-label">Eliga una categoria</label>
+            <select class="form-control " style="width:86% !important;" id="idCategoria">
                 <option value="1">Python</option>
                 <option value="2">Excel</option>
             </select>
-        </div>
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Tiempo de duracion:</label>
+            <input type="text" class="form-control" name="tiempoCurso" id="tiempoCurso">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" style="margin-right: 6px;" class="col-form-label">Precio:</label>
+            <input type="text" class="form-control" name="Precio" id="Precio">
+          </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button type="submit" class="btn btn-primary">Send message</button>
