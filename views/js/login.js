@@ -14,9 +14,9 @@ $(document).ready(function() {
           contraseña  : $("#claveuser").val()
         },
         success: function (result){
-          if ($.trim(result) == ""){
+          if (result == "success"){
             //Ingresa al dashboard
-            window.location.href = './index.php'
+            // window.location.href = './index.php'
           } else {
             alert(result);
           }
@@ -33,7 +33,7 @@ $(document).ready(function() {
     //       username    : $("#nomuser").val(),
     //       contraseña  : $("#claveuser").val()
     //     },
-    //     success: function (result){
+    //     successs: function (result){
     //       if ($.trim(result) == ""){
     //         //Ingresa al dashboard
     //         $('#incorrectUser').hide();

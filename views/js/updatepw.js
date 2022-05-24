@@ -1,9 +1,7 @@
 //Cambiar clave - Vaciar modal
+const funcion = require("./funciones").default
 $(document).ready(function (){
   //Limpiar modal
-  function resetUI(){
-    $("#form-update-pw")[0].reset();
-  }
   function changepw(){
     const clave1 = $("#clave1").val();
     const clave2 = $("#clave2").val();
@@ -30,7 +28,7 @@ $(document).ready(function (){
             //trim = quitar espacios
             if($.trim(result) == ""){
               alert("Se actualizo la contraseña");
-              resetUI();
+              funcion.resetUI('#form-update-pw');
               $("#modal-change-pw").modal("hide");
             }
             else{

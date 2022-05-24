@@ -28,6 +28,7 @@ if (isset($_GET['op'])){
                 $_SESSION['nombre_completo'] = $registro['nombre_completo'];
                 $_SESSION['nombre_usuario'] = $registro['nombre_usuario'];
                 $_SESSION['contraseña'] = $registro['contraseña'];
+                echo "success";
             } else {
                 //Contraseña incorrecta
                 $_SESSION['acceso'] = false;

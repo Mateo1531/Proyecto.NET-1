@@ -6,7 +6,7 @@
         <div class="panel panel-primary filterable">
             <div class="panel-heading">
                 <h3 class="panel-title">Curso</h3>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Crear curso</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCrearCurso" data-whatever="@getbootstrap">Crear curso</button>
             </div>
             <div class="text-right">
                 <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filter</button>
@@ -20,34 +20,23 @@
                         <th><input type="text" class="form-control" placeholder="Username" disabled></th>
                     </tr>
                 </thead>
-                <tbody>
+
+                <!-- <tbody>
                     <tr>
                         <td>1</td>
                         <td>Mark</td>
                         <td>Otto</td>
                         <td>@mdo</td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
-                </tbody>
+                </tbody> -->
             </table>
         </div>
     </div>
 </div>
-
-<img id="succes" src="views/img/7efs.gif" alt="">
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- imagen gif de carga -->
+<img id="success" src="views/img/7efs.gif" alt="">
+<!-- modal de creacion de curso -->
+<div class="modal fade" id="modalCrearCurso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -86,8 +75,8 @@
             <input type="text" class="form-control" name="Precio" id="Precio">
           </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Send message</button>
+          <button type="button" class="btn btn-secondary"  data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" >Send message</button>
         </div>
         </form>
       </div>

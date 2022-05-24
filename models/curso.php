@@ -7,7 +7,7 @@
             try {
                 // var_dump($datosRespuesta);die;
                 parent::execProcedure($datosRespuesta, "sp_create_Curso", false);
-                return "succes";
+                return "success";
             } catch (Exception $error){
                 die($error->getMessage());
             }
