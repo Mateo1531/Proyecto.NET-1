@@ -12,8 +12,11 @@
 <?php 
   include 'views/nav.php';
   if(isset($_GET['ruta'])){
-    if($_GET['ruta']=='login' || $_GET['ruta']=='registro-usuario'){
-      include 'views/'.$_GET['ruta'].'.php';
+    $ruta='views/'.$_GET['ruta'].'.php';
+    if(file_exists($ruta)){
+      include $ruta;
+    }else{
+      include 'views/home.php';
     }
   }
   include 'views/modal-upw.php';
@@ -26,5 +29,6 @@
 <!-- Agregar "../" a la ruta js para evitar conflictos -->
 <script src="../views/js/login.js"></script>
 <script src="../views/js/updatepw.js"></script>
+<script src="../views/js/cursos.js"></script>
 </body>
 </html>

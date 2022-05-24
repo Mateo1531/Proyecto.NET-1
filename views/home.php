@@ -1,32 +1,31 @@
 <!-- <?php 
     session_start(); 
     
-    if ($_SESSION['acceso'] == false){
-        //Acceso al Dashboard
-        header('location:/login.php');
-    }
+    // if ($_SESSION['acceso'] == false){
+    //     //Acceso al Dashboard
+    //     header('location:/login.php');
+    // }
     
-    if (isset($_SESSION['acceso'])){
-    }
-?> -->
+    // if (isset($_SESSION['acceso'])){
+    // }
+?>-->
 
     <style>
       *{
         margin: 0px;
       }
     </style>
-
     <div class="" >
       <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="img/nick-morrison-FHnnjk1Yj7Y-unsplash.jpg" style="height: 600px;" class="d-block w-100" alt="...">
+            <img src="views/img/nick-morrison-FHnnjk1Yj7Y-unsplash.jpg" style="height: 600px;" class="d-block w-100" alt="...">
           </div>
           <div class="carousel-item">
-            <img src="img/altumcode-dC6Pb2JdAqs-unsplash.jpg"  style="height: 600px;" class="d-block w-100" alt="...">
+            <img src="views/img/altumcode-dC6Pb2JdAqs-unsplash.jpg"  style="height: 600px;" class="d-block w-100" alt="...">
           </div>
           <div class="carousel-item">
-            <img src="img/andrew-neel-cckf4TsHAuw-unsplash.jpg" style="height: 600px;" class="d-block w-100" alt="...">
+            <img src="views/img/andrew-neel-cckf4TsHAuw-unsplash.jpg" style="height: 600px;" class="d-block w-100" alt="...">
           </div>
         </div>
       <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls" data-slide="prev">
@@ -49,5 +48,3 @@
         <a href="#" class="card-link">Another link</a>
       </div>
     </div>
-</body>
-</html>
