@@ -1,5 +1,5 @@
 //Cambiar clave - Vaciar modal
-const funcion = require("./funciones").default
+
 $(document).ready(function (){
   //Limpiar modal
   function changepw(){

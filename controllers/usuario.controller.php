@@ -1,70 +1,63 @@
 <?php
-session_start();
-
-require_once '../models/Usuario.php';
- 
-if (isset($_GET['op'])){
-
-    //Instancia de la clase usuario
-    $usuario = new Usuario();
-
-    //Iniciar Sesión
-    if ($_GET['op'] == 'login'){
-
-        //Array asociativo
-        $datos = ["username" => $_GET['username']];
-        $resultado = $usuario->login($datos);
-        //Acceso al sistema
-        if ($resultado){
-            //Acceso correcto
-            $registro = $resultado[0];
-            $claveValidar = $_GET['contraseña'];
-
-            //Validar contraseña
-            if (password_verify($claveValidar, $registro['contraseña'])){
-                //Contraseña correcta
-                $_SESSION['acceso'] = true;
-                $_SESSION['id_usuario'] = $registro['id_usuario'];
-                $_SESSION['nombre_completo'] = $registro['nombre_completo'];
-                $_SESSION['nombre_usuario'] = $registro['nombre_usuario'];
-                $_SESSION['contraseña'] = $registro['contraseña'];
-                echo "success";
+      
+class UsuarioController{
+    // public function
+    // metodo para realizar login
+    public function login(){
+        if ($_GET['op'] == 'login'){
+            $usuario = new Usuario();
+            //Array asociativo
+            $datos = ["username" => $_GET['username']];
+            $resultado = $usuario->login($datos);
+            //Acceso al sistema
+            if ($resultado){
+                //Acceso correcto
+                $registro = $resultado[0];
+                $claveValidar = $_GET['contraseña'];
+    
+                //Validar contraseña
+                if (password_verify($claveValidar, $registro['contraseña'])){
+                    //Contraseña correcta
+                    $_SESSION['acceso'] = true;
+                    $_SESSION['id_usuario'] = $registro['id_usuario'];
+                    $_SESSION['nombre_completo'] = $registro['nombre_completo'];
+                    $_SESSION['nombre_usuario'] = $registro['nombre_usuario'];
+                    $_SESSION['contraseña'] = $registro['contraseña'];
+                    return "success";
+                } else {
+                    //Contraseña incorrecta
+                    $_SESSION['acceso'] = false;
+                    $_SESSION['id_usuario'] = '';
+                    $_SESSION['nombre_completo'] = '';
+                    $_SESSION['nombre_usuario'] = '';
+                    $_SESSION['contraseña'] = '';
+    
+                    return "Password invalid";
+                }
+                
             } else {
-                //Contraseña incorrecta
+                //Acceso fallido
                 $_SESSION['acceso'] = false;
                 $_SESSION['id_usuario'] = '';
                 $_SESSION['nombre_completo'] = '';
                 $_SESSION['nombre_usuario'] = '';
                 $_SESSION['contraseña'] = '';
-
-                echo "Password invalid";
+    
+                return "User not exist";
             }
-            
-        } else {
-            //Acceso fallido
-            $_SESSION['acceso'] = false;
-            $_SESSION['id_usuario'] = '';
-            $_SESSION['nombre_completo'] = '';
-            $_SESSION['nombre_usuario'] = '';
-            $_SESSION['contraseña'] = '';
-
-            echo "User not exist";
         }
     }
-
-    //Cerrar Sesión
-    if ($_GET['op'] == 'logout'){
+    // metodo para cierre sesion
+    public function logout(){
         session_destroy();
         session_unset();
         header('Location:../');
     }
-
-    //Cambiar Contraseña
-    if ($_GET['op'] == 'changepassword'){
-        //Verificar que las contraseñas coincidan
+    // metodo para cambio de contraseña
+    public function changepassword(){
         $oldpassword = $_GET['clave1'];
         $newpassword = $_GET['clave2'];
-
+        $usuario = new Usuario();
         //Desencriptando variables
         if (password_verify($oldpassword, $_SESSION['contraseña'])){
             //Las variables coinciden
@@ -73,13 +66,20 @@ if (isset($_GET['op'])){
                 "password" => password_hash($newpassword, PASSWORD_BCRYPT)
             ];
             $usuario->changepassword($datosenviar);
-            echo "";
+            return "";
         } else {
             //Las variables no coinciden
-            echo "La contraseña ingresada no es correcta";
+            return "La contraseña ingresada no es correcta";
         }
     }
-
 }
+if(isset($_POST)){
+    $o_load_Methot= new loadMethodos();
+    $clase= $_POST['op'];
+    $action= $_POST['class'];
+    $o_load_Methot->load_Methot($clase,$action);
+    
+}
+
 
 ?>

@@ -1,3 +1,9 @@
+<?php 
+$o_listCourse= new AdminCursoController();
+$a_cursos= $o_listCourse->listarCurso();
+
+?>
+
 <div class="container">
     <h3>The columns titles are merged with the filters inputs thanks to the placeholders attributes</h3>
     <hr>
@@ -17,28 +23,21 @@
                         <th><input type="text" class="form-control" placeholder="#" disabled></th>
                         <th><input type="text" class="form-control" placeholder="First Name" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Last Name" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Username" disabled></th>
+                        <th><input type="text" class="form-control"  disabled></th>
+                        <th><input type="text" class="form-control" disabled></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Mark</td>
+                     <?php foreach ($a_cursos as $curso => $a_cursos){?>
+                      <tr>
+                        <td><?php echo($curso);  ?></td>
+                        <td><?php var_dump($a_cursos[2]); ?></td>
                         <td>Otto</td>
                         <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
+                        <td><i type="button" class="fas fa-edit"></i></td>
+                        <td><i type="button" class="fa-solid fa-power-off"></i></td>
+                    </tr>    
+                    <?php }?>
                 </tbody>
             </table>
         </div>

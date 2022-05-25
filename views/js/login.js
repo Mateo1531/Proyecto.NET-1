@@ -7,16 +7,17 @@ $(document).ready(function() {
     if($("#nomuser").val() != "" && $("#claveuser").val() != ""){
       $.ajax({
         url: 'controllers/usuario.controller.php',
-        type: 'GET',
+        type: 'POST',
         data: {
           op          : 'login',
+          class      : 'UsuarioController',
           username    : $("#nomuser").val(),
           contraseña  : $("#claveuser").val()
         },
         success: function (result){
           if (result == "success"){
             //Ingresa al dashboard
-            // window.location.href = './index.php'
+            window.location.href = './index.php'
           } else {
             alert(result);
           }

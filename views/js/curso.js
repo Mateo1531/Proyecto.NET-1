@@ -1,6 +1,8 @@
 //Validar campos login
-const funcion = require("./funciones").default;
+
 $(document).ready(function() {
+  // listar Curso
+
   $("#success").hide();
     $("#formCurso").submit(function( event ) {
         event.preventDefault();
@@ -16,7 +18,9 @@ $(document).ready(function() {
               if (result['code']=='success'){
                 $("#success").show();
                 $('#modalCrearCurso').modal('hide');
-                funcion.resetUI('#modalCrearCurso');
+                var asdsa=$("#modalCrearCurso");
+                console.log(asdsa);
+                resetUI(asdsa);
               }if(result['code']=='noSession'){
                 window.location.href = './index.php'
               }else {

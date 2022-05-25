@@ -1,5 +1,4 @@
 <?php
-    require_once '../core/model.master.php';
 
     class Usuario extends ModelMaster{
 
