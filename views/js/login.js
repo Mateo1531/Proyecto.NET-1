@@ -17,7 +17,7 @@ $(document).ready(function() {
         },
         success: function (result){
           if (result == "successLogin"){
-
+            window.location.href = './index.php'
           } else {
             alert(result);
           }
@@ -75,7 +75,7 @@ $(document).ready(function() {
                 },
                 success: function (result){
                     if (result == "success"){
-                      
+                      window.location.href = './index.php'
                     } else {
                         alert(result);
                     }

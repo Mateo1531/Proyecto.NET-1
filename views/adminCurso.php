@@ -1,42 +1,107 @@
 <?php 
 $o_listCourse= new AdminCursoController();
-$a_cursos=  $o_listCourse->listarCurso();
-$a_cursos=get_object_vars($a_cursos);
+$a_cursos= $o_listCourse->listarCurso();
+
+$a_cursos = json_decode( json_encode( $a_cursos ), true );
+// print_r($a_cursos);die;
 ?>
+
+<div class="container-fluid" style="margin-top: 50px;" >
+  <div class="row">
+    <div class="col-sm container-fluid mx-auto" style="padding-left:42px ;">
+	<iframe width="100%" height="120%" src="https://www.youtube-nocookie.com/embed/C_nuaualoto" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="col-sm row  align-items-center">
+      	<div class="card mx-auto">
+        <div id="formContent">  
+			<div class="fadeIn first title">
+				Hay tantas razones para empezar para compartir tus conocimientos
+            </div>   
+            <div class="container row" >
+				<div class="col-lg-12">
+					<img src="./views/img/value-prop-inspire-v3.jpg" alt="">
+					<img src="./views/img/value-prop-teach-v3.jpg" alt="">
+					<img src="./views/img/value-prop-get-rewarded-v3.jpg" alt="">
+				</div>
+				<div class="container">
+						<div class="row">
+							<div class="col-sm">
+								Publica el curso que quieras, como quieras y ten siempre el control de tu propio contenido.
+							</div>
+							<div class="col-sm">
+								Enseña lo que sabes y ayuda a los estudiantes a explorar sus intereses, adquirir nuevas habilidades y avanzar en sus carreras.
+							</div>
+							<div class="col-sm">
+								Amplía tu red profesional, desarrolla tus conocimientos y gana dinero con cada inscripción de pago.
+							</div>
+						</div>
+					</div>	
+				</div>
+        	</div>
+      	</div>
+		  <div class=" mx-auto" style="margin-top: 10px; position: relative;">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCrearCurso" data-whatever="@getbootstrap">Crear curso</button>
+    		</div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  	<div class="row">
+		<div class="col-sm row  align-items-center">
+			
+		</div>
+		<div class="col-sm container-fluid">
+			<div id="dialogCurso" class="container" >
+					<div class="" style="text-align: center;">
+						
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 <div class="container">
-    <h3>The columns titles are merged with the filters inputs thanks to the placeholders attributes</h3>
+    <hr>
+
+    
     <hr>
     <p>Inspired by this <a href="http://bootsnipp.com/snippets/featured/panel-tables-with-filter">snippet</a></p>
     <div class="row">
         <div class="panel panel-primary filterable">
-            <div class="panel-heading">
-                <h3 class="panel-title">Curso</h3>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCrearCurso" data-whatever="@getbootstrap">Crear curso</button>
-            </div>
+            
             <div class="text-right">
                 <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filter</button>
             </div>
             <table class="table">
                 <thead>
-                    <tr class="filters">
-                        <th><input type="text" class="form-control" placeholder="#" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="First Name" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Last Name" disabled></th>
+                    <tr class="filters ">
+                        <th><input type="text" class="form-control" placeholder="Id" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Nombre" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Descripcion" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Duracion" disabled></th>
                         <th><input type="text" class="form-control"  disabled></th>
-                        <th><input type="text" class="form-control" disabled></th>
                     </tr>
                 </thead>
                 <tbody>
-                     <?php foreach ($a_cursos as $curso => $a_cursos){?>
-                      <tr>
-                        <td><?php var_dump($a_cursos); die;?></td>
-                        <td><?php echo "Key=" . $curso . ", Value=" . $a_cursos;?></td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td><i type="button" class="fas fa-edit"></i></td>
-                        <td><i type="button" class="fa-solid fa-power-off"></i></td>
-                    </tr>    
-                    <?php }?>
+                <!-- echo "Key=" . $curso . ", Value=" . $a_cursos; -->
+                     <?php foreach ($a_cursos as $curso) {?>
+                        <tr>
+                          <td><?php echo $curso['id_curso']; ?></td>
+                          <td><?php echo $curso['nombre_curso']; ?></td>
+                          <td><?php echo $curso['descripcion']; ?></td>
+                          <td><?php echo $curso['nombre_curso']; ?></td>
+                          <td>
+                            <i id="<?php echo $curso['id_curso'];?>" type="button" name="editCuro" class="fas fa-edit"></i>
+                            <i id="<?php echo $curso['id_curso'];?>" type="button" name="disabledCurso" class="fa-solid fa-power-off"></i>
+                          </td> 
+                          
+
+
+                        </tr>   
+                      <?php }?>
                 </tbody>
             </table>
         </div>

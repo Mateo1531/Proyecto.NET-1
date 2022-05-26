@@ -30,5 +30,17 @@ $(document).ready(function() {
         });
     });
 
+    $('button[name=editCuro]').val();
 
+    function recargar(comp){
+      var id = comp.id;
+      console.log(id);
+    }
+    // function recargar(){
+    //   $(this).live("click", function (evento)
+    //   {
+    //   var id = $(this).attr("id");
+    //   alert(id);
+    //   });
+    //   }
 });

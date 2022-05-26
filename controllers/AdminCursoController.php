@@ -23,7 +23,6 @@ class AdminCursoController{
     }
     public function listarCurso(){
         $o_modelCurso= new adminCurso;
-        
         return $o_modelCurso->listCurso();
     }
 }

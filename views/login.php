@@ -1,7 +1,7 @@
-<div class="container-fluid">
+<div class="container-fluid " style=" padding-left: 0px !important; padding-right: 0px !important;">
   <div class="row">
-    <div class="col-sm container-fluid">
-      <img class="card-img-top" style="width:50%;" src="views/img/blackP.jpg" alt="Card image cap">
+    <div class="col-sm" >
+      <img class="card-img-top" style="height: 48rem;" src="views/img/blackP.jpg" alt="Card image cap">
     </div>
     <div class="col-sm row  align-items-center">
       <div class="card mx-auto">

@@ -18,17 +18,15 @@
               </li>
           <?php }?>
          
-          <li class="nav-item">
-            <a class="nav-link" href="#" data-target="#modal-change-pw" data-toggle="modal">Cambiar contraseña</a>
-          </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
               Opciones
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="margin-left: -113px;">
               <a class="dropdown-item" href="adminCurso">Adminitracion de Cursos</a>
               <a class="dropdown-item" href="#">Another action</a>
               <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Cambiar contraseña</a>
               <a class="dropdown-item" type="button" id="btnLogout" >Cerrar Sesión</a>
             </div>
           </li>
