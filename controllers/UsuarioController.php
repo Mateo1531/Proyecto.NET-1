@@ -1,20 +1,18 @@
 <?php
-      
 class UsuarioController{
     // public function
     // metodo para realizar login
     public function login(){
-        if ($_GET['op'] == 'login'){
-            $usuario = new Usuario();
+        if ($_REQUEST['op'] == 'login'){
+            $usuario = new UsuarioModel();
             //Array asociativo
-            $datos = ["username" => $_GET['username']];
+            $datos = ["username" => $_REQUEST['username']];
             $resultado = $usuario->login($datos);
             //Acceso al sistema
             if ($resultado){
                 //Acceso correcto
                 $registro = $resultado[0];
-                $claveValidar = $_GET['contraseña'];
-    
+                $claveValidar = $_REQUEST['contraseña'];
                 //Validar contraseña
                 if (password_verify($claveValidar, $registro['contraseña'])){
                     //Contraseña correcta
@@ -22,8 +20,8 @@ class UsuarioController{
                     $_SESSION['id_usuario'] = $registro['id_usuario'];
                     $_SESSION['nombre_completo'] = $registro['nombre_completo'];
                     $_SESSION['nombre_usuario'] = $registro['nombre_usuario'];
-                    $_SESSION['contraseña'] = $registro['contraseña'];
-                    return "success";
+                    $_SESSION['contraseña'] = $registro['contraseña'];                   
+                    return "successLogin";
                 } else {
                     //Contraseña incorrecta
                     $_SESSION['acceso'] = false;
@@ -51,13 +49,13 @@ class UsuarioController{
     public function logout(){
         session_destroy();
         session_unset();
-        header('Location:../');
+        return "success";
     }
     // metodo para cambio de contraseña
     public function changepassword(){
-        $oldpassword = $_GET['clave1'];
-        $newpassword = $_GET['clave2'];
-        $usuario = new Usuario();
+        $oldpassword = $_REQUEST['clave1'];
+        $newpassword = $_REQUEST['clave2'];
+        $usuario = new UsuarioModel();
         //Desencriptando variables
         if (password_verify($oldpassword, $_SESSION['contraseña'])){
             //Las variables coinciden
@@ -72,13 +70,6 @@ class UsuarioController{
             return "La contraseña ingresada no es correcta";
         }
     }
-}
-if(isset($_POST)){
-    $o_load_Methot= new loadMethodos();
-    $clase= $_POST['op'];
-    $action= $_POST['class'];
-    $o_load_Methot->load_Methot($clase,$action);
-    
 }
 
 

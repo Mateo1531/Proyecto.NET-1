@@ -12,7 +12,7 @@ class AdminCursoController{
                 /** Instanciando  Modelo  Curso*/    
                 $o_Curso= new adminCurso();
                 $aResponse['code']= $o_Curso->crearCurso($a_data);
-                echo json_encode($aResponse, JSON_FORCE_OBJECT);
+                echo json_encode($aResponse['code'], JSON_FORCE_OBJECT);
             } catch (Exception $error){
                 die($error->getMessage());
             }
@@ -23,6 +23,7 @@ class AdminCursoController{
     }
     public function listarCurso(){
         $o_modelCurso= new adminCurso;
+        
         return $o_modelCurso->listCurso();
     }
 }

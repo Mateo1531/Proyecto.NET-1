@@ -22,7 +22,7 @@
 
         public function listCurso(){
             try {
-               $data=parent::getRows("sp_listCurso");
+               $data= parent::getRows("sp_listCurso");
                return  $data;
             } catch (Exception $error){
                 die($error->getMessage());

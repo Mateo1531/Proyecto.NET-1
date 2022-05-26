@@ -1,4 +1,11 @@
-<!DOCTYPE html>
+<?php 
+    require_once 'controllers/Autoload.php';
+    $autoload= new Autoload();
+    $route= isset($_GET['ruta']) ? $_GET['ruta'] : 'home';
+    $route= new RouteIndexController($route);
+?>
+<?php if($_SERVER['REQUEST_METHOD']=='GET'){?>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -12,16 +19,7 @@
 
 </head>
 <body>
-<?php 
-  require_once 'controllers/autoload.php';
-  $autoload= new Autoload();
-  $route= isset($_GET['ruta']) ? $_GET['ruta'] : 'home';
-  $route= new RouteIndexController($route);
-    
 
-
-
-?>
 <!-- Bootstrap -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -36,4 +34,4 @@
 <script src="views/js/curso.js"></script>
 </body>
 </html>
-
+<?php }?>

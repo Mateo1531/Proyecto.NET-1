@@ -6,8 +6,9 @@ $(document).ready(function() {
   function signin(){
     if($("#nomuser").val() != "" && $("#claveuser").val() != ""){
       $.ajax({
-        url: 'controllers/usuario.controller.php',
+        url: 'controllers/RouteIndexController',
         type: 'POST',
+        dataType: "json",
         data: {
           op          : 'login',
           class      : 'UsuarioController',
@@ -15,9 +16,8 @@ $(document).ready(function() {
           contraseña  : $("#claveuser").val()
         },
         success: function (result){
-          if (result == "success"){
-            //Ingresa al dashboard
-            window.location.href = './index.php'
+          if (result == "successLogin"){
+
           } else {
             alert(result);
           }
@@ -62,6 +62,28 @@ $(document).ready(function() {
   $("#acceder").click(function (){
       signin();
   });
+
+    // Cierre de session
+    $('#btnLogout').click(function (){  
+            $.ajax({
+                url: 'controllers/RouteIndexController',
+                type: 'POST',
+                dataType: "json",
+                data: {
+                  op          : 'logout',
+                  class      : 'UsuarioController',
+                },
+                success: function (result){
+                    if (result == "success"){
+                      
+                    } else {
+                        alert(result);
+                    }
+                }
+            });
+      });
+
+
 
     /* Script de buscador de tabla de admin. Curso*/
     $('.filterable .btn-filter').click(function(){

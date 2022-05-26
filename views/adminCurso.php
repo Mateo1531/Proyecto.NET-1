@@ -1,9 +1,8 @@
 <?php 
 $o_listCourse= new AdminCursoController();
-$a_cursos= $o_listCourse->listarCurso();
-
+$a_cursos=  $o_listCourse->listarCurso();
+$a_cursos=get_object_vars($a_cursos);
 ?>
-
 <div class="container">
     <h3>The columns titles are merged with the filters inputs thanks to the placeholders attributes</h3>
     <hr>
@@ -30,8 +29,8 @@ $a_cursos= $o_listCourse->listarCurso();
                 <tbody>
                      <?php foreach ($a_cursos as $curso => $a_cursos){?>
                       <tr>
-                        <td><?php echo($curso);  ?></td>
-                        <td><?php var_dump($a_cursos[2]); ?></td>
+                        <td><?php var_dump($a_cursos); die;?></td>
+                        <td><?php echo "Key=" . $curso . ", Value=" . $a_cursos;?></td>
                         <td>Otto</td>
                         <td>@mdo</td>
                         <td><i type="button" class="fas fa-edit"></i></td>

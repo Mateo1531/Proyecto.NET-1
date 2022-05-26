@@ -1,30 +1,36 @@
-<?php 
+<?php
 
+use RouteIndexController as GlobalRouteIndexController;
 
 class RouteIndexController{
     public function __construct($route)
     {   
         $this->route=$route;
         if(!isset($_SESSION)){
-            session_start([
-                'use_only_cookies'=>1,
-                'read_and_close'=> true
-            ]);
-            $_SESSION['acceso']==false;
+            if( !isset($_SESSION) )  session_start();
+
+		    if( !isset($_SESSION['acceso']) )  $_SESSION['acceso'] = false;
         }
         $controller = new ViewController();
-        if($_SESSION['acceso']){
-            // $this->route = isset($_GET['r']) ? $_GET['r'] : 'home';
+        if(isset($_REQUEST['class'])){
+            $class= $_REQUEST['class'];
+            $methodt= $_REQUEST['op'];
+            $objeto= new $class;
+            $aResponse=$objeto->$methodt();
+            echo json_encode($aResponse, JSON_FORCE_OBJECT);
+        }else{
+            $this->route = isset($_REQUEST['ruta']) ? $_REQUEST['ruta'] : 'home';
             // var_dump($this->route);die;
-            if(!isset( $_POST['op'] )){
+            if($this->route=='home'){
+                $controller->load_view('home');
+            }
+            if(!isset( $_REQUEST['op'] )){
                 $controller->load_view($this->route);
-            }else{
-
             }
 
-        }else{
-            $controller->load_view('login');
         }
+
+        
     }
 
 }

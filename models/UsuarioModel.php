@@ -1,6 +1,6 @@
 <?php
-
-    class Usuario extends ModelMaster{
+    require_once './core/model.master.php';
+    class UsuarioModel extends ModelMaster{
 
         public function login(array $datosRespuesta){
             try {
