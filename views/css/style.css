@@ -1,10 +1,12 @@
 
 /* BASIC */
 
+  *{
+    margin: 0px;
+  }
 
   body {
-    font-family: "Poppins", sans-serif;
-    height: 100vh;
+    font-family: "Poppins", sans-serif;   
   }
   
   a {
@@ -14,6 +16,10 @@
     font-weight: 400;
   }
   
+  .imgHome{
+    position: absolute;
+    background-color: #ededed;
+  }
   h2 {
     text-align: center;
     font-size: 16px;
