@@ -28,7 +28,7 @@
                   <a class="btn btn-lg btn-google btn-block text-uppercase btn-outline" style="background-color: #f6f6f6;" href="#"><img style="margin: 2px 13px 3px 0px;  width:7%" src="views/img/logFb.png">Continuar con Facebook</a>
               </div>
               
-            <input id="acceder"  class="fadeIn fourth btn btn-dark" value="Iniciar Sesion">
+            <input id="acceder"  class="fadeIn fourth btn btn-dark" value="Iniciar Sesión">
             </form>
             <div id="formFooter">
                 <a class="underlineHover" href="#">Cambiar contraseña</a>

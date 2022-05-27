@@ -18,6 +18,14 @@
             }
         }
 
+        public function reguser(array $datosRespuesta){
+            try {
+                parent::execProcedure($datosRespuesta, "sp_crear_usuario", false);
+            } catch (Exception $error){
+                die($error->getMessage());
+            }
+        }
+
         public function template(array $datosRespuesta){
             try {
                 return parent::execProcedure($datosRespuesta, "stored_procedure", true);
