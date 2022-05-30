@@ -7,8 +7,7 @@ class RouteIndexController{
     {   
         $this->route=$route;
         if(!isset($_SESSION)){
-            if( !isset($_SESSION) )  session_start();
-
+            if( !isset($_SESSION) )  session_start();            
 		    if( !isset($_SESSION['acceso']) )  $_SESSION['acceso'] = false;
         }
         $controller = new ViewController();
@@ -27,12 +26,8 @@ class RouteIndexController{
             if(!isset( $_REQUEST['op'] )){
                 $controller->load_view($this->route);
             }
-
-        }
-
-        
+        }   
     }
-
 }
 
 ?>

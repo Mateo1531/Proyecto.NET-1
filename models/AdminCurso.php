@@ -5,9 +5,7 @@
 
         public function crearCurso(array $datosRespuesta){
             try {
-                // var_dump($datosRespuesta);die;
                 parent::execProcedure($datosRespuesta, "sp_create_Curso", false);
-                return "success";
             } catch (Exception $error){
                 die($error->getMessage());
             }
@@ -20,31 +18,34 @@
             }
         }
 
-        public function listCurso(){
-            try {
-               $data= parent::getRows("sp_listCurso");
-               return  $data;
+        public function listCurso(array $datos){
+            try {      
+               return parent::getRows("sp_listartodoscurso");
             } catch (Exception $error){
                 die($error->getMessage());
             }
         }
-        // public function crearCurso(){
-        //     try {
-        //         // var_dump($datosRespuesta);die;
-        //         return  parent::execProcedure($datosRespuesta, "sp_listCurso ", true);
-               
-        //     } catch (Exception $error){
-        //         die($error->getMessage());
-        //     }
-        // }
-        
-        // public function template(array $datosRespuesta){
-        //     try {
-        //         return parent::execProcedure($datosRespuesta, "stored_procedure", true);
-        //     } catch (Exception $error){
-        //         die($error->getMessage());
-        //     }
-        // }
+        public function listTodosCurso(){
+            try {
+                return parent::getRows("listaTodosCursos");
+            } catch (Exception $error){
+                die($error->getMessage());
+            }
+        }
+        public function UltimoCurso($datosRespuesta){
+            try {
+               return  parent::execProcedure($datosRespuesta, "sp_listUltimoCurso", true);
+            } catch (Exception $error){
+                die($error->getMessage());
+            }
+        }
+        public function executeQuery($query,$return){
+            try {
+                return  parent::query($query,$return);
+             } catch (Exception $error){
+                 die($error->getMessage());
+             }
+        }
 
     }
 ?>

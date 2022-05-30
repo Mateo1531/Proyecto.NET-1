@@ -16,8 +16,9 @@ $(document).ready(function() {
           contraseña  : $("#claveuser").val()
         },
         success: function (result){
+          console.log(result);
           if (result == "successLogin"){
-
+            window.location.href = 'home';
           } else {
             alert(result);
           }
@@ -75,7 +76,7 @@ $(document).ready(function() {
                 },
                 success: function (result){
                     if (result == "success"){
-                      
+                      window.location.href = 'login';
                     } else {
                         alert(result);
                     }

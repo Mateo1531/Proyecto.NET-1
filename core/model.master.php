@@ -46,6 +46,13 @@ class ModelMaster extends Conexion{
       die($e->getMessage());
     }
   }
+  public function query($query,$return){
+    $commandSQL = $this->pdo->prepare($query);
+    $commandSQL->execute();
+    if($return){
+      return $commandSQL->fetchAll(PDO::FETCH_OBJ);
+    }
+  }
 
   /**
    * Elimina uno o más registros dependiendo de los criterios establecidos en la matriz

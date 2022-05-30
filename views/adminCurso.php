@@ -1,42 +1,28 @@
-<?php 
-$o_listCourse= new AdminCursoController();
-$a_cursos=  $o_listCourse->listarCurso();
-$a_cursos=get_object_vars($a_cursos);
-?>
 <div class="container">
-    <h3>The columns titles are merged with the filters inputs thanks to the placeholders attributes</h3>
+    <div class="" style="text-align: center; font-weight: bold; margin-top: 60px;">
+      <h3>Comparte tus conocimientos con los demas y obten ingreso por ello</h3>
+    </div>
     <hr>
-    <p>Inspired by this <a href="http://bootsnipp.com/snippets/featured/panel-tables-with-filter">snippet</a></p>
     <div class="row">
         <div class="panel panel-primary filterable">
             <div class="panel-heading">
-                <h3 class="panel-title">Curso</h3>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCrearCurso" data-whatever="@getbootstrap">Crear curso</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" id="btnModalCrearCurso" data-target="#modalCrearCurso" data-whatever="@getbootstrap">Crear curso</button>
             </div>
             <div class="text-right">
-                <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filter</button>
+                <button class="btn btn-default btn-xs btn-filter bg-primary"  style="color: white;"><span class="glyphicon glyphicon-filter"></span> Filtrar</button>
             </div>
-            <table class="table">
+            <table id="tableCurso" class="table">
                 <thead>
                     <tr class="filters">
-                        <th><input type="text" class="form-control" placeholder="#" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="First Name" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Last Name" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="ID" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Nombre del curso" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Descripcion" disabled></th>
                         <th><input type="text" class="form-control"  disabled></th>
                         <th><input type="text" class="form-control" disabled></th>
                     </tr>
                 </thead>
-                <tbody>
-                     <?php foreach ($a_cursos as $curso => $a_cursos){?>
-                      <tr>
-                        <td><?php var_dump($a_cursos); die;?></td>
-                        <td><?php echo "Key=" . $curso . ", Value=" . $a_cursos;?></td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td><i type="button" class="fas fa-edit"></i></td>
-                        <td><i type="button" class="fa-solid fa-power-off"></i></td>
-                    </tr>    
-                    <?php }?>
+                <tbody >
+                     
                 </tbody>
             </table>
         </div>
@@ -55,24 +41,19 @@ $a_cursos=get_object_vars($a_cursos);
         </button>
       </div>
       <div class="modal-body">
-        <form id="formCurso">
+        <form id="formCurso" method="POST" enctype="multipart/form-data">
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Nombre del curso:</label>
             <input type="text" class="form-control" name="nombreCurso" id="nombreCurso">
           </div>
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Descripcion:</label>
-            <input type="text" class="form-control" name="descripcion" id="descripcion">
-          </div>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Temario:</label>
-            <input type="text" class="form-control" name="descripcion" id="temario">
+            <label for="exampleFormControlTextarea1">Descripcion:</label>
+            <textarea style="width: 86%;" class="form-control" name="descripcion" id="descripcion" rows="3"></textarea>
           </div>
           <div class="form-group">
             <label for="recipient-name"  class="col-form-label">Eliga una categoria</label>
             <select class="form-control " style="width:86% !important;" id="idCategoria">
-                <option value="1">Python</option>
-                <option value="2">Excel</option>
+                
             </select>
           </div>
           <div class="form-group">
@@ -83,10 +64,14 @@ $a_cursos=get_object_vars($a_cursos);
             <label for="recipient-name" style="margin-right: 6px;" class="col-form-label">Precio:</label>
             <input type="text" class="form-control" name="Precio" id="Precio">
           </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary"  data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary" >Send message</button>
-        </div>
+
+          <div class="mb-3" style="width: 86%;">
+              <input type="file" id="imageFile" name="file" accept="image/*">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary"  data-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary" >Crear</button>
+          </div>
         </form>
       </div>
     </div>
