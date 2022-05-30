@@ -18,7 +18,6 @@
                         <th><input type="text" class="form-control" placeholder="Nombre del curso" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Descripcion" disabled></th>
                         <th><input type="text" class="form-control"  disabled></th>
-                        <th><input type="text" class="form-control" disabled></th>
                     </tr>
                 </thead>
                 <tbody >

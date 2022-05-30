@@ -9,9 +9,15 @@
         </form>
       <div class="collapse navbar-collapse " id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-                <a class="nav-link text-white" href="login">Convierte en profesor</a>
-          </li>         
+          <?php  if(!$_SESSION['acceso']){?>
+            <li class="nav-item">
+                  <a class="nav-link text-white" href="login">Convierte en profesor</a>
+            </li>
+            <li class="nav-item">
+                  <a class="nav-link text-white" href="registro-usuario">Registrase</a>
+            </li>   
+          <?php }?>
+            
           <li class="nav-item dropdown">
             <a class="nav-link  text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
               <img src="views/img/INICIO SESION-03.png" style="width:30%;" alt="">

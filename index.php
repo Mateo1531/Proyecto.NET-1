@@ -32,6 +32,7 @@
 <script src="views/js/login.js"></script>
 <script src="views/js/updatepw.js"></script>
 <script src="views/js/curso.js"></script>
+<script src="views/js/registuser.js"></script>
 </body>
 </html>
 <?php }?>

@@ -115,6 +115,7 @@ $(document).ready(function() {
         });
     });
 
+    $('button[name=editCuro]').val();
 
     // function recargar(){
     //   $(this).live("click", function (evento)

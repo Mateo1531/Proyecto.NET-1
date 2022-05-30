@@ -6,11 +6,11 @@ class ViewController {
 	public function load_view($view) {
 		$ruta= self:: $view_path . $view . '.php';
 		if(file_exists($ruta)){
-			if($view!='login'){
+			if($view!='login'  && $view!='registro-usuario'){
 				require_once( self::$view_path . 'nav.php' );
 			}
 			require_once( $ruta );
-			if($view!='login'){
+			if($view!='login' && $view!='registro-usuario'){
 				require_once( self::$view_path . 'footer.php' );
 			}
 		}

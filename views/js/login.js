@@ -11,7 +11,7 @@ $(document).ready(function() {
         dataType: "json",
         data: {
           op          : 'login',
-          class      : 'UsuarioController',
+          class       : 'UsuarioController',
           username    : $("#nomuser").val(),
           contraseña  : $("#claveuser").val()
         },
@@ -20,31 +20,11 @@ $(document).ready(function() {
           if (result == "successLogin"){
             window.location.href = 'home';
           } else {
-            alert(result);
+            $('#incorrectLogin').show();
           }
         }
       });
     }
-    //Usuario o contraseña incorrectas
-    // if($("#nomuser").val() != "" || $("#claveuser").val() != "" ){
-    //   $.ajax({
-    //     url: 'controllers/usuario.controller.php',
-    //     type: 'GET',
-    //     data: {
-    //       op          : 'login',
-    //       username    : $("#nomuser").val(),
-    //       contraseña  : $("#claveuser").val()
-    //     },
-    //     successs: function (result){
-    //       if ($.trim(result) == ""){
-    //         //Ingresa al dashboard
-    //         $('#incorrectUser').hide();
-    //       } else {
-    //         $('#incorrectUser').show();
-    //       }
-    //     }
-    //   });
-    // }
     //Campo usuario vacio
     if($("#nomuser").val() == ""){
       $('#validateUser').show();
@@ -59,9 +39,14 @@ $(document).ready(function() {
     else{
       $('#validateContra').hide();
     }
-    }
+  }
   $("#acceder").click(function (){
       signin();
+  });
+  $("#claveuser").keypress(function (event){
+    if (event.keyCode == 13){
+      signin();
+    }
   });
 
     // Cierre de session
@@ -86,22 +71,22 @@ $(document).ready(function() {
 
 
 
-    /* Script de buscador de tabla de admin. Curso*/
-    $('.filterable .btn-filter').click(function(){
+  /* Script de buscador de tabla de admin. Curso*/
+  $('.filterable .btn-filter').click(function(){
     var $panel = $(this).parents('.filterable'),
     $filters = $panel.find('.filters input'),
     $tbody = $panel.find('.table tbody');
     if ($filters.prop('disabled') == true) {
-        $filters.prop('disabled', false);
-        $filters.first().focus();
+      $filters.prop('disabled', false);
+      $filters.first().focus();
     } else {
-        $filters.val('').prop('disabled', true);
-        $tbody.find('.no-result').remove();
-        $tbody.find('tr').show();
+      $filters.val('').prop('disabled', true);
+      $tbody.find('.no-result').remove();
+      $tbody.find('tr').show();
     }
-    });
+  });
 
-    $('.filterable .filters input').keyup(function(e){
+  $('.filterable .filters input').keyup(function(e){
     /* Ignore tab key */
     var code = e.keyCode || e.which;
     if (code == '9') return;
@@ -114,8 +99,8 @@ $(document).ready(function() {
     $rows = $table.find('tbody tr');
     /* Dirtiest filter function ever ;) */
     var $filteredRows = $rows.filter(function(){
-        var value = $(this).find('td').eq(column).text().toLowerCase();
-        return value.indexOf(inputContent) === -1;
+      var value = $(this).find('td').eq(column).text().toLowerCase();
+      return value.indexOf(inputContent) === -1;
     });
     /* Clean previous no-result if exist */
     $table.find('tbody .no-result').remove();
@@ -124,7 +109,7 @@ $(document).ready(function() {
     $filteredRows.hide();
     /* Prepend no-result row if all rows are filtered */
     if ($filteredRows.length === $rows.length) {
-        $table.find('tbody').prepend($('<tr class="no-result text-center"><td colspan="'+ $table.find('.filters th').length +'">No result found</td></tr>'));
+      $table.find('tbody').prepend($('<tr class="no-result text-center"><td colspan="'+ $table.find('.filters th').length +'">No result found</td></tr>'));
     }
   });
 });

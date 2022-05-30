@@ -1,6 +1,9 @@
 
 /* BASIC */
 
+  *{
+    margin: 0px;
+  }
 
   body {
     font-family: "Poppins", sans-serif;
@@ -16,6 +19,10 @@
     font-weight: 400;
   }
   
+  .imgHome{
+    position: absolute;
+    background-color: #ededed;
+  }
   h2 {
     text-align: center;
     font-size: 16px;
@@ -149,6 +156,14 @@
   
   input[type=text]:placeholder {
     color: #cccccc;
+  }
+
+  @media only screen and (min-width: 900px) {
+    .form-control{
+      width: 700px !important; 
+      margin: auto !important;
+      margin-right: 20px !important;
+    }
   }
   
   
