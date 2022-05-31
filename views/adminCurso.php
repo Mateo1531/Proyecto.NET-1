@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="margin-bottom: 290px">
     <div class="" style="text-align: center; font-weight: bold; margin-top: 60px;">
       <h3>Comparte tus conocimientos con los demas y obten ingreso por ello</h3>
     </div>

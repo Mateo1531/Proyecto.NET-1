@@ -18,7 +18,7 @@
             }
         }
 
-        public function listCurso(array $datos){
+        public function listCurso(){
             try {      
                return parent::getRows("sp_listartodoscurso");
             } catch (Exception $error){
