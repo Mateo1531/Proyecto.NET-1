@@ -20,6 +20,9 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `plataforma_cursos`
 --
+DROP SCHEMA `plataforma_cursos`;
+CREATE SCHEMA `plataforma_cursos`;
+USE `plataforma_cursos`;
 
 DELIMITER $$
 --
@@ -360,42 +363,44 @@ COMMIT;
 
 
 
-DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_user_login`(IN _username VARCHAR(30))
-BEGIN
-	SELECT usuario.`id_usuario`, perfil.`nombre_completo`, usuario.`nombre_usuario`, usuario.`contraseña`
-    FROM usuario 
-    INNER JOIN perfil ON perfil.id_perfil = usuario.id_perfil
-    WHERE nombre_usuario = _username AND estado = '1';
-END;
+-- DELIMITER $$
+-- CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_user_login`(IN _username VARCHAR(30))
+-- BEGIN
+--     SELECT usuario.`id_usuario`, perfil.`nombre_completo`, usuario.`nombre_usuario`, usuario.`contraseña`
+--     FROM usuario 
+--     INNER JOIN perfil ON perfil.id_perfil = usuario.id_perfil
+--     WHERE nombre_usuario = _username AND estado = '1';
+-- END $$
+-- DELIMITER;
 
-DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_change_password`(IN _idusuario INT, 	 VARCHAR(80))
-BEGIN
-	UPDATE usuario SET contraseña = _password WHERE id_usuario = _idusuario;
-END;
+-- DELIMITER $$
+-- CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_change_password`(IN _idusuario INT, 	 VARCHAR(80))
+-- BEGIN
+-- 	UPDATE usuario SET contraseña = _password WHERE id_usuario = _idusuario;
+-- END $$
+-- DELIMITER ;
 
-DELIMITER $$ 
-CREATE DEFINER=root@localhost PROCEDURE sp_create_Curso
-	(IN _nombreCurso VARCHAR(30), 
-    IN _idIntructor INT, 
-    IN _descripcion INT, 
-    IN _duracion VARCHAR(10), 
-    IN _precio INT) 
-BEGIN   
-	INSERT INTO curso  (nombre_curso, id_instructor, descripcion, duracion_curso, precio_curso)  
-	VALUES (_nombreCurso, _idIntructor, _descripcion, _duracion,_precio); 
-END $$ 
-DELIMITER ;
+-- DELIMITER $$ 
+-- CREATE DEFINER=root@localhost PROCEDURE sp_create_Curso
+-- 	(IN _nombreCurso VARCHAR(30), 
+--     IN _idIntructor INT, 
+--     IN _descripcion INT, 
+--     IN _duracion VARCHAR(10), 
+--     IN _precio INT) 
+-- BEGIN   
+--     INSERT INTO curso  (nombre_curso, id_instructor, descripcion, duracion_curso, precio_curso)  
+-- 	   VALUES (_nombreCurso, _idIntructor, _descripcion, _duracion,_precio); 
+-- END $$ 
+-- DELIMITER ;
 
-DELIMITER $$
-CREATE DEFINER=root@localhost PROCEDURE sp_listCategoria()
-    COMMENT 'Lista las categorias'
-BEGIN
-  SELECT * FROM curso c 
-  JOIN categoria cat ON  c.id_categoria=cat.id_categoria;
-END$$
-DELIMITER ;
+-- DELIMITER $$
+-- CREATE DEFINER=root@localhost PROCEDURE sp_listCategoria()
+--     COMMENT 'Lista las categorias'
+-- BEGIN
+--   SELECT * FROM curso c 
+--   JOIN categoria cat ON  c.id_categoria=cat.id_categoria;
+-- END$$
+-- DELIMITER ;
 
 DELIMITER $$
 CREATE DEFINER=root@localhost PROCEDURE sp_cambiar_curso(
@@ -419,9 +424,9 @@ BEGIN
 END$$
 DELIMITER ;
 
-DROP PROCEDURE sp_crear_usuario;
+-- DROP PROCEDURE sp_crear_usuario;
 
-DELIMITER $$sp_change_password
+DELIMITER $$
 CREATE DEFINER=root@localhost PROCEDURE sp_crear_usuario(
 	IN _nombre VARCHAR(30),
     IN _correo VARCHAR(20),
@@ -435,6 +440,7 @@ BEGIN
   VALUES (@id, _correo, _contraseña);
 END$$
 DELIMITER ;
+
 -- CALL sp_crear_usuario('Luis Bros','luis@gmail.com','915001456','123456');
 
 -- DELIMITER $$
@@ -447,8 +453,8 @@ DELIMITER ;
 -- $$
 -- DELIMITER ;
 -- CALL sp_cambiar_curso('1','4',null,'1',null,null,null,null);
-SELECT * FROM usuario;
-SELECT * FROM perfil;
+-- SELECT * FROM usuario;
+-- SELECT * FROM perfil;
 
 SHOW ENGINE INNODB STATUS;
 -- SELECT COLUMN_NAME FROM `COLUMNS` C 
