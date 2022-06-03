@@ -79,7 +79,6 @@ class UsuarioController{
             "phone" => $_REQUEST['phone'],
             "password" => password_hash($rpassword, PASSWORD_BCRYPT)
         ];
-        // var_dump($datos);die;
         //-> : navegar en un objeto
         $usuario->reguser($datos);
         

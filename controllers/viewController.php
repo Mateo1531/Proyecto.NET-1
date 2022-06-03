@@ -10,7 +10,7 @@ class ViewController {
 				require_once( self::$view_path . 'nav.php' );
 			}
 			require_once( $ruta );
-			if($view!='login' && $view!='registro-usuario'){
+			if($view =='home'){
 				require_once( self::$view_path . 'footer.php' );
 			}
 		}

@@ -19,7 +19,6 @@ class RouteIndexController{
             echo json_encode($aResponse, JSON_FORCE_OBJECT);
         }else{
             $this->route = isset($_REQUEST['ruta']) ? $_REQUEST['ruta'] : 'home';
-            // var_dump($this->route);die;
             if($this->route=='home'){
                 $controller->load_view('home');
             }

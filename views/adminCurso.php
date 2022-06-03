@@ -1,3 +1,4 @@
+
 <div class="container" style="margin-bottom: 290px">
     <div class="" style="text-align: center; font-weight: bold; margin-top: 60px;">
       <h3>Comparte tus conocimientos con los demas y obten ingreso por ello</h3>
@@ -17,6 +18,7 @@
                         <th><input type="text" class="form-control" placeholder="ID" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Nombre del curso" disabled></th>
                         <th><input type="text" class="form-control" placeholder="Descripcion" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Precio" disabled></th>
                         <th><input type="text" class="form-control"  disabled></th>
                     </tr>
                 </thead>
@@ -43,11 +45,11 @@
         <form id="formCurso" method="POST" enctype="multipart/form-data">
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Nombre del curso:</label>
-            <input type="text" class="form-control" name="nombreCurso" id="nombreCurso">
+            <input type="text" class="form-control" name="nombreCurso" id="nombreCurso" required>
           </div>
           <div class="form-group">
             <label for="exampleFormControlTextarea1">Descripcion:</label>
-            <textarea style="width: 86%;" class="form-control" name="descripcion" id="descripcion" rows="3"></textarea>
+            <textarea style="width: 86%;" class="form-control" name="descripcion" id="descripcion" rows="3" required></textarea>
           </div>
           <div class="form-group">
             <label for="recipient-name"  class="col-form-label">Eliga una categoria</label>
@@ -57,18 +59,18 @@
           </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Tiempo de duracion:</label>
-            <input type="text" class="form-control" name="tiempoCurso" id="tiempoCurso">
+            <input type="text" class="form-control" name="tiempoCurso" id="tiempoCurso" required>
           </div>
           <div class="form-group">
             <label for="recipient-name" style="margin-right: 6px;" class="col-form-label">Precio:</label>
-            <input type="text" class="form-control" name="Precio" id="Precio">
+            <input type="text" class="form-control" name="Precio" id="Precio" required>
           </div>
 
           <div class="mb-3" style="width: 86%;">
-              <input type="file" id="imageFile" name="file" accept="image/*">
+              <input type="file" id="imageFile" name="file" accept="image/*" required>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary"  data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-secondary"  data-dismiss="modal" >Cerrar</button>
             <button type="submit" class="btn btn-primary" >Crear</button>
           </div>
         </form>

@@ -1,7 +1,7 @@
 <div class="container-fluid" style="width:100%;height:auto; padding: 0px !important;">
   <div class="row">
     <div class="col-sm container-fluid">
-    <img class="card-img-top" style="width:100%;height: 60rem;" src="views/img/blackP.jpg" alt="Card image cap">
+    <img class="card-img-top" style="width:100%;height: 100vh;" src="views/img/blackP.jpg" alt="Card image cap">
     </div>
     <div class="col-sm row  align-items-center">
       <div class="card mx-auto">
@@ -20,6 +20,7 @@
               <input id="registrar" type="button" class="fadeIn fourth btn btn-dark" value="Registrarse">
             </form>
             <div id="formFooter">
+            <a class="underlineHover" href="login">Login  /</a>
                 <a class="underlineHover" href="home">Regresar a Home</a> 
             </div>
         </div>

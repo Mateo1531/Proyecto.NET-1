@@ -33,6 +33,10 @@
 <script src="views/js/updatepw.js"></script>
 <script src="views/js/curso.js"></script>
 <script src="views/js/registuser.js"></script>
+<!-- sweetalert2 -->
+<script src="sweetalert2.all.min.js"></script>
+
+
 </body>
 </html>
 <?php }?>

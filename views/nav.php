@@ -1,4 +1,19 @@
-<nav class="navbar navbar-expand-lg navbar-lightk bg-primary" >
+
+<?php 
+if($_SESSION['acceso']){
+  $o_adminCurso= new AdminCursoController();
+  $a_shoppingcart= $o_adminCurso->listShoppingcart();
+  $a_shoppingcart=json_decode( json_encode( $a_shoppingcart ), true );
+  $count=0;
+  $amount=0;
+  
+  // var_dump($a_shoppingcart);die;
+}
+
+
+?>
+
+<nav class="navbar navbar-expand-lg navbar-lightk bg-primary" style="height: 8%;">
       <a class="navbar-brand" href="home"><img src="views/img/LOGO W-02.png" style="width: 40%" alt=""></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -10,21 +25,49 @@
       <div class="collapse navbar-collapse " id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
           <?php  if(!$_SESSION['acceso']){?>
-            <li class="nav-item">
-                  <a class="nav-link text-white" href="login">Convierte en profesor</a>
+            <li class="nav-item"  style="margin: 0px 40px 0px 0px;">
+                  <a class="nav-link text-white" href="login" style="font-size: 20;">Se un profesor</a>
             </li>
-            <li class="nav-item">
-                  <a class="nav-link text-white" href="registro-usuario">Registrase</a>
+            <li class="nav-item"  style="margin: 0px 40px 0px 0px;">
+                  <a class="nav-link text-white" href="registro-usuario"  style="font-size: 20;">Registrarse</a>
             </li>   
           <?php }?>
-            
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link  text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+              <img src="views/img/icoSale.png" style="width:30%;" alt="">
+            </a>
+            <div id="carSale" class="dropdown-menu" aria-labelledby="navbarDropdown" style="left: -301px; width: 380px;">
+            <div id="container-card">
+                  <?php if($_SESSION['acceso']){?>
+                    <?php if(empty($a_shoppingcart)){?>
+                      <?php foreach($a_shoppingcart as $shoppingcart){ ?>
+                        <a class='dropdown-item' style='display: block;float: left;width: 69%;' href='adminCurso'><?php echo($a_shoppingcart[$count]['nombre_curso']); ?></a>
+                        <span type="button" style='display: block;float: right;margin-right: 17px;margin-top: 6px;'><i class="fa-solid fa-x"></i></span>
+                        <span style='display: block;float: right;margin-right: 17px;'>$<?php echo($a_shoppingcart[$count]['precio_curso']);?></span>                    
+ 
+                         
+                       
+                        <?php if($amount==0){?>
+                        <?php  $amount=$amount + intval($a_shoppingcart[$count]['precio_curso']); }?>
+                          <button>PAGAR</button>
+                      <?php $count++;}?> 
+                    <?php }?>
+                      <a id="msgCardVacio" class='dropdown-item' href='' style="text-align: center;">Su carrito de compra esta vacio</a>
+                      <!-- <a class='dropdown-item' style='display: block;float: left;width: 69%;' href='adminCurso'><?php echo($amount); ?></a> -->
+                  <?php }else{?>
+                  <?php }?>
+                  </div>
+            </div>
+            <!-- echo $a_shoppingcart[0]['nombre_curso'] -->
+          </li>
           <li class="nav-item dropdown">
             <a class="nav-link  text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
               <img src="views/img/INICIO SESION-03.png" style="width:30%;" alt="">
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="margin-left: -109px;">
               <?php  if(!$_SESSION['acceso']){?>
-                  <a class="dropdown-item" href="Login">Login</a>
+                  <a class="dropdown-item" href="login">Login</a>
               <?php } else{?>
                 <a class="dropdown-item" href="adminCurso">Adminitracion de Cursos</a>
                 <a class="dropdown-item" href="#">Cambiar contraseña</a>
